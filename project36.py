@@ -22,18 +22,15 @@ class myApp(App):
         def resize_label_text(label, new_height):
             label.fontsize = 0.5*label.height
         output_label.bind(height=resize_label_text)
-
         def evaluate_result(instance):
             try:
                 output_label.text = str(eval(output_label.text))
             except SyntaxError:
                 output_label.text = 'Python Syntax error!'
         button_grid.children[0].bind(on_press=evaluate_result)
-
         def clear_label(instance):
             output_label.text = " "
         clear_button.bind(on_press=clear_label)
-
         root_widget.add_widget(output_label)
         root_widget.add_widget(button_grid)
         root_widget.add_widget(clear_button)
